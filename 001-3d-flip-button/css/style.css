@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: 'Lato';
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* perspective: 원근감을 주는 css 속성 */
+  perspective: 1000px;
+}
+
+.flip-btn {
+  width: 200px;
+  height: 100px;
+  color: white;
+  text-align: center;
+  line-height: 100px;
+  /* 기본적으로 웹 브라우저에 표시되는 HTML 요소는 2D */
+  /* flip-btn 하위에 있는 태그들 모두 3d 공간에 배치가 된다 */
+  /* 웹 페이지에 있는 요소들은 x축과 y축을 중심으로 2D에 배치가 된다 */
+  /* preserve-3d를 주면 z축의 개념이 생겨난다 (입체감이 생긴다) */
+  transform-style: preserve-3d;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.flip-btn:hover {
+  transform: rotateX(-90deg);
+}
+
+.front {
+  background-color: goldenrod;
+  height: 100px;
+  transform: translateZ(50px);
+}
+
+.back {
+  background-color: darkgoldenrod;
+  height: 100px;
+  /* x축을 기점으로 돌린다 */
+  /* 3d공간에 배치되어 있는 HTML 요소를 회전을 시키게 되면 회전된 요소에 따라서 XYZ도 유동적으로 움직인다 */
+  /* x축을 90도로 회전시켰기때문에 z축이 위아래를 가리키게 된다 */
+  transform: rotateX(90deg) translateZ(150px);
+}
